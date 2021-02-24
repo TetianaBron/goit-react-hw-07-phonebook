@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
+import * as phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
 import './Filter.scss';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';

@@ -11,7 +11,7 @@ const Spinner = () => {
                  color="#3f51b5"
                  height={100}
                  width={100}
-                 timeout={3000} 
+                 timeout={300} 
                 />
         </div>
     );

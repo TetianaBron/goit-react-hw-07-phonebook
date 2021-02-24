@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
-import Notification from '../../Components/Notification/Notification';
+import operations from '../../redux/phoneBook/phoneBook-operations';
+import Notification from '../../components/Notification/Notification';
 import PropTypes from 'prop-types';
 import './ContactForm.scss';
 
@@ -17,7 +17,7 @@ class ContactForm extends Component {
         onSubmit: PropTypes.func,
     };
 
-    setMassge = (note) => {
+    setMessage = (note) => {
       this.setState({ message:  note});
       setTimeout(() => {
       this.setState({ message: null });
@@ -37,15 +37,15 @@ class ContactForm extends Component {
         e.preventDefault();
 
         if (name === '') {
-            this.setMassge('Enter contact name, please!');
+            this.setMessage('Enter contact name, please!');
             return;
         }
         if (number === '') {
-            this.setMassge('Enter concact phone, please!');
+            this.setMessage('Enter concact phone, please!');
             return;
         }
         if (this.props.contacts.find((item) => item.name.toLowerCase() === name.toLowerCase())) {
-            this.setMassge('Contact already exists!');
+            this.setMessage('Contact already exists!');
             return;
         } 
 
@@ -107,7 +107,7 @@ const mapStateToProps = (state) => ({
 })
      
 const mapDispatchToProps = dispatch => ({
-    onSubmit: (name, number) => dispatch(phoneBookActions.addContact(name, number)),
+    onSubmit: (name, number) => dispatch(operations.addContact(name, number)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
