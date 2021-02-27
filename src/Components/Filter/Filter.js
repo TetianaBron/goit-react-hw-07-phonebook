@@ -3,6 +3,7 @@ import * as phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
 import './Filter.scss';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import selectors from '../../redux/phoneBook/phoneBook-selectors';
 
 
 const Filter = ({value, onChangeFilter, contacts}) => (
@@ -35,8 +36,8 @@ Filter.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-    value: state.phoneBook.filter,
-    contacts: state.phoneBook.contacts,
+    value: selectors.getFilter(state),
+    contacts: selectors.getAllContacts(state),
 })
 
 const mapDispatchToProps = dispatsh => ({

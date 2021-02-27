@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import operations from '../../redux/phoneBook/phoneBook-operations';
+import operations from '../../redux/phoneBook/phoneBook-operations'
+import selectors from '../../redux/phoneBook/phoneBook-selectors';
 import Notification from '../../components/Notification/Notification';
 import PropTypes from 'prop-types';
 import './ContactForm.scss';
@@ -103,7 +104,7 @@ class ContactForm extends Component {
  }
 
 const mapStateToProps = (state) => ({
-    contacts: state.phoneBook.contacts,
+    contacts: selectors.getAllContacts(state),
 })
      
 const mapDispatchToProps = dispatch => ({

@@ -10,6 +10,7 @@ import Logo from './components/Logo/Logo';
 import operations from './redux/phoneBook/phoneBook-operations';
 import Spinner from './components/Spinner/Spinner';
 import Notification from './components/Notification/Notification';
+import selectors from './redux/phoneBook/phoneBook-selectors';
 
 class App extends Component {
 
@@ -32,7 +33,7 @@ class App extends Component {
 
                  {this.props.error &&
                     <Notification
-                        message={`ERROR: ${this.props.error.message}. RELOAD APPLICATION, PLEASE.`} />}
+                        message={`ERROR: ${this.props.error.message}.`} />}
                 
                 <ContactForm />
                     
@@ -55,13 +56,13 @@ class App extends Component {
 };
 
 const mapStateToProps = (state) => ({
-    contacts: state.phoneBook.contacts,
-    isLoadingContacts: state.phoneBook.loading,
-    error: state.phoneBook.error,
-})
+    contacts: selectors.getAllContacts(state),
+    isLoadingContacts: selectors.getLoading(state),
+    error: selectors.getError(state),
+});
 
 const mapDispatchToProps = dispatch => ({
     fetchContacts: () => dispatch(operations.fetchContacts())
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
