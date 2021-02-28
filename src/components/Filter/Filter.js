@@ -40,8 +40,8 @@ const mapStateToProps = (state) => ({
     contacts: selectors.getAllContacts(state),
 })
 
-const mapDispatchToProps = dispatsh => ({
-    onChangeFilter: e => dispatsh(phoneBookActions.changeFilter(e.target.value))
+const mapDispatchToProps = dispatch => ({
+    onChangeFilter: e => dispatch(phoneBookActions.changeFilter(e.target.value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
